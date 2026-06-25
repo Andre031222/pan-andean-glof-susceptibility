@@ -11,7 +11,7 @@
 |---|------|-------|-------|------|
 | 1 | **Richar Andre Vilca-Solorzano** | 75521963@est.unap.edu.pe | 0009-0003-2385-5263 | **First author / Corresponding author** |
 | 2 | Dina Maribel Yana-Yucra | maribelbel201314@gmail.com | 0009-0003-6218-2735 | Author |
-| 3 | Milton Vladimir Mamani-Calisaya | mmamanic@unap.edu.pe | **PENDING** | Author |
+| 3 | Milton Vladimir Mamani-Calisaya | mmamanic@unap.edu.pe | 0000-0002-0676-0989 | Author |
 | 4 | Fred Torres-Cruz | ftorres@unap.edu.pe | 0000-0003-0834-6834 | Author |
 
 ## Affiliation
