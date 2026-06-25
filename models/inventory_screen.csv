@@ -1,0 +1,5 @@
+top_pct,n_lakes,off_context,off_context_pct,pos_in_set
+0.5,101,2,2.0,12
+1.0,201,8,4.0,13
+2.0,403,20,5.0,13
+5.0,1007,113,11.2,16

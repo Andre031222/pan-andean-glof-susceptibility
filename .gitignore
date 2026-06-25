@@ -1,0 +1,85 @@
+# ── Editors / tooling (keep repo clean) ──────────────────────────────────────
+.claude/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ── Python ───────────────────────────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.ipynb_checkpoints/
+
+# ── Virtual environments ─────────────────────────────────────────────────────
+glof/
+.venv/
+.venv_glof/
+venv/
+env/
+
+# ── Environment / secrets ────────────────────────────────────────────────────
+.env
+.env.*
+!.env.template
+
+# ── Large raw & intermediate data (NOT in repo; available on request) ────────
+data/raw/
+data/interim/
+data/processed/lakes/
+data/processed/features/
+data/processed/labeled/*
+# keep the derived, leakage-free training table for reproducibility:
+!data/processed/labeled/training_data.csv
+
+# generic large geospatial / binary formats
+*.tif
+*.tiff
+*.gpkg
+*.parquet
+*.feather
+*.geojson
+*.zip
+
+# ── Old IJACSA submission (superseded by natural_hazards_paper/) ─────────────
+ijacsa_paper/
+
+# ── LaTeX auxiliary files ────────────────────────────────────────────────────
+*.aux
+*.log
+*.out
+*.blg
+*.bbl
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+natural_hazards_paper/sn-article-EXAMPLE.tex
+natural_hazards_paper/user-manual.pdf
+build*.log
+*compile*.log
+
+# ── Logs ─────────────────────────────────────────────────────────────────────
+logs/
+
+# ── Figures: keep only the publication PNG/JPG used by the manuscript ────────
+figures/publication/_*.png
+figures/**/*.pdf
+figures/downloads/
+figures/exploratory/
+figures/ml/
+figures/panels/
+figures/submission/
+
+# Generated validation review app (regenerable via scripts/15)
+docs/validation_app/
+
+# Generated review montages/thumbnails (regenerable via scripts/15,17)
+docs/montages/
+webapp/backend/thumbs/
+webapp/**/__pycache__/
+*.db

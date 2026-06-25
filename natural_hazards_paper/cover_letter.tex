@@ -1,0 +1,89 @@
+\documentclass[11pt]{letter}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+
+\signature{Richar Andre Vilca-Solorzano\\
+  on behalf of all co-authors\\
+  Universidad Nacional del Altiplano (UNAP), Puno, Peru\\
+  \href{mailto:75521963@est.unap.edu.pe}{75521963@est.unap.edu.pe}}
+
+\address{Faculty of Statistical and Computer Engineering\\
+  Universidad Nacional del Altiplano (UNAP)\\
+  Puno, Peru}
+
+\begin{document}
+
+\begin{letter}{The Editor-in-Chief\\ \textit{Natural Hazards}\\ Springer}
+
+\opening{Dear Editor,}
+
+We are pleased to submit our original research manuscript entitled
+\textbf{``Pan-Andean explainable machine learning identifies priority
+glacial lakes for outburst flood early warning''} for consideration for
+publication in \textit{Natural Hazards}.
+
+Glacial lake outburst floods (GLOFs) are among the most destructive
+cryospheric hazards in the Andes, yet disaster-risk managers lack an
+objective, scalable method to decide which of the tens of thousands of
+Andean glacial lakes most urgently require inspection. Our study
+addresses this gap directly and, to our knowledge, presents the
+\emph{first pan-Andean, explainable GLOF susceptibility model} validated
+against an independent historical catalogue. The main contributions are:
+
+\begin{itemize}
+\item A harmonized, multitemporal glacial-lake inventory of 69{,}643
+  lake-year observations (20{,}140 distinct lakes $\geq$0.05 km$^2$)
+  spanning fifteen study areas across four countries (Peru, Bolivia,
+  Ecuador, and Chile, including Patagonia), built from free Sentinel-2
+  and Landsat imagery and open digital elevation models.
+\item A rigorously validated, \emph{leakage-free} machine-learning
+  framework evaluated under strict StratifiedGroup out-of-fold and
+  Leave-One-Country-Out cross-validation, explicitly designed for the
+  extreme class imbalance (1:629) and data scarcity ($n=34$ GLOF
+  lake-years from 32 distinct source lakes) inherent to historical GLOF
+  catalogues. The best discriminator reaches AUC-ROC 0.826
+  (95\% CI 0.729--0.916; permutation $p<0.001$).
+\item SHAP-based physical interpretation that yields an honest,
+  multivariate signature of GLOF-prone lakes---moderate size combined
+  with compact shape, low moraine-dam freeboard, and proximity to active
+  ice---rather than a single-variable proxy.
+\item A fully open-source, reproducible pipeline and an operational,
+  isotonically calibrated (Brier Skill Score 0.24) prioritization
+  framework: a compact top-2\% watch-list of 403 lakes recovers 41\% of
+  confirmed GLOF-source lakes at $20.3\times$ random enrichment
+  ($74.8\times$ in the top 0.5\%), directly usable by resource-constrained
+  agencies such as Peru's INAIGEM for evidence-based disaster risk
+  reduction.
+\end{itemize}
+
+We believe the manuscript is well aligned with the scope of
+\textit{Natural Hazards}, which covers flood and glacial hazards,
+risk assessment, and disaster risk reduction. Critically, the framework
+is designed for impact in \emph{developing Andean nations} that bear the
+highest GLOF exposure yet have the fewest resources: it relies only on
+free Sentinel-2 imagery and open DEMs, runs without proprietary
+software, and turns these inputs into a ranked watch-list that lets
+resource-constrained agencies (e.g.\ Peru's INAIGEM) triage scarce
+field-inspection budgets toward the lakes most likely to threaten
+downstream communities. The work should thus be of broad interest to the
+hazard, cryosphere, remote-sensing, and disaster-risk-reduction
+communities, and provides a transferable template for other glacierized
+mountain regions.
+
+We confirm that this manuscript is original, has not been published
+previously, and is not under consideration for publication elsewhere.
+All authors have read and approved the submission and agree to its
+publication. The authors declare no competing interests. All input
+datasets are publicly available, and the full analysis pipeline,
+trained models, and code are openly released under the MIT licence.
+
+We suggest the \emph{Natural Hazards and Risk} subject area and would be
+glad to recommend potential reviewers upon request. Thank you for your
+consideration.
+
+\closing{Sincerely,}
+
+\end{letter}
+\end{document}

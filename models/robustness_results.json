@@ -1,0 +1,208 @@
+{
+  "best_model": "RandomForest",
+  "bootstrap_ci": {
+    "mean": 0.8274575568857139,
+    "ci_lower": 0.7284847150261948,
+    "ci_upper": 0.9160656721876087
+  },
+  "permutation_p": 0.0,
+  "jackknife": [
+    {
+      "event": "bolivia_cordillera_real_-68344_-15874",
+      "n_test": 1,
+      "mean_proba": 0.944
+    },
+    {
+      "event": "carabaya_-70382_-14012",
+      "n_test": 1,
+      "mean_proba": 0.804
+    },
+    {
+      "event": "chile_andes_centrales_-70003_-33498",
+      "n_test": 1,
+      "mean_proba": 0.01
+    },
+    {
+      "event": "chile_andes_centrales_-70004_-33499",
+      "n_test": 1,
+      "mean_proba": 0.02
+    },
+    {
+      "event": "chile_andes_centrales_-70005_-33499",
+      "n_test": 1,
+      "mean_proba": 0.808
+    },
+    {
+      "event": "cordillera_blanca_-77385_-9372",
+      "n_test": 1,
+      "mean_proba": 0.824
+    },
+    {
+      "event": "cordillera_blanca_-77544_-9163",
+      "n_test": 1,
+      "mean_proba": 0.0
+    },
+    {
+      "event": "cordillera_blanca_-77573_-9063",
+      "n_test": 1,
+      "mean_proba": 0.9
+    },
+    {
+      "event": "cordillera_huanzo_-73072_-14904",
+      "n_test": 1,
+      "mean_proba": 0.0
+    },
+    {
+      "event": "cordillera_huayhuash_-76901_-10318",
+      "n_test": 1,
+      "mean_proba": 0.0
+    },
+    {
+      "event": "cordillera_huayhuash_-76937_-10265",
+      "n_test": 1,
+      "mean_proba": 0.0
+    },
+    {
+      "event": "cordillera_raura_-76688_-10314",
+      "n_test": 1,
+      "mean_proba": 0.842
+    },
+    {
+      "event": "cordillera_raura_-76693_-10493",
+      "n_test": 1,
+      "mean_proba": 0.006
+    },
+    {
+      "event": "cordillera_raura_-76710_-10498",
+      "n_test": 1,
+      "mean_proba": 0.668
+    },
+    {
+      "event": "cordillera_raura_-76798_-10485",
+      "n_test": 1,
+      "mean_proba": 0.016
+    },
+    {
+      "event": "cordillera_urubamba_-71982_-13293",
+      "n_test": 1,
+      "mean_proba": 0.008
+    },
+    {
+      "event": "cordillera_urubamba_-72175_-13221",
+      "n_test": 1,
+      "mean_proba": 0.0
+    },
+    {
+      "event": "cordillera_urubamba_-72187_-13280",
+      "n_test": 1,
+      "mean_proba": 0.874
+    },
+    {
+      "event": "cordillera_urubamba_-72200_-13165",
+      "n_test": 1,
+      "mean_proba": 0.004
+    },
+    {
+      "event": "cordillera_vilcanota_-70987_-13678",
+      "n_test": 1,
+      "mean_proba": 0.88
+    },
+    {
+      "event": "cordillera_vilcanota_-71061_-13627",
+      "n_test": 1,
+      "mean_proba": 0.91
+    },
+    {
+      "event": "cordillera_vilcanota_-71077_-13636",
+      "n_test": 1,
+      "mean_proba": 0.892
+    },
+    {
+      "event": "ecuador_antisana_-78135_-487",
+      "n_test": 1,
+      "mean_proba": 0.002
+    },
+    {
+      "event": "ecuador_antisana_-78136_-480",
+      "n_test": 1,
+      "mean_proba": 0.002
+    },
+    {
+      "event": "ecuador_antisana_-78147_-464",
+      "n_test": 1,
+      "mean_proba": 0.896
+    },
+    {
+      "event": "ecuador_antisana_-78147_-511",
+      "n_test": 1,
+      "mean_proba": 0.894
+    },
+    {
+      "event": "patagonia_norte_-72632_-46987",
+      "n_test": 1,
+      "mean_proba": 0.0
+    },
+    {
+      "event": "patagonia_norte_-73021_-47182",
+      "n_test": 1,
+      "mean_proba": 0.0
+    },
+    {
+      "event": "patagonia_norte_-73050_-47552",
+      "n_test": 1,
+      "mean_proba": 0.0
+    },
+    {
+      "event": "patagonia_norte_-73236_-46997",
+      "n_test": 1,
+      "mean_proba": 0.0
+    },
+    {
+      "event": "patagonia_norte_-73393_-47033",
+      "n_test": 1,
+      "mean_proba": 0.0
+    },
+    {
+      "event": "patagonia_sur_-72901_-47050",
+      "n_test": 1,
+      "mean_proba": 0.614
+    }
+  ],
+  "loco": [
+    {
+      "country": "Bolivia",
+      "n_test": 682,
+      "n_pos": 1,
+      "auc_roc": 1.0,
+      "auc_pr": 1.0
+    },
+    {
+      "country": "Peru",
+      "n_test": 4349,
+      "n_pos": 18,
+      "auc_roc": 0.8044331563149388,
+      "auc_pr": 0.5094176070616819
+    },
+    {
+      "country": "Chile",
+      "n_test": 14880,
+      "n_pos": 9,
+      "auc_roc": 0.7239668556997586,
+      "auc_pr": 0.24144882553276253
+    },
+    {
+      "country": "Ecuador",
+      "n_test": 229,
+      "n_pos": 4,
+      "auc_roc": 0.61,
+      "auc_pr": 0.5087336244541485
+    }
+  ],
+  "delong": {
+    "auc_a": 0.7943674470360055,
+    "auc_b": 0.7994998881042372,
+    "diff": -0.005132441068231741,
+    "z": -0.07177999876273887,
+    "p_value": 0.9427769904294556
+  }
+}
