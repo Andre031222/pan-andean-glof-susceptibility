@@ -19,6 +19,7 @@
 \usepackage[caption=false,font=footnotesize]{subfig}%
 \usepackage[section]{placeins}%  keep figures within their section
 \usepackage[nolinks]{qrcode}%  QR code for the code/data repository
+\usepackage{lineno}%  line numbers for peer review
 
 %% ── Figures live in the shared project figures folder ─────────────────────
 \graphicspath{{../figures/publication/}{./figures/}}
@@ -36,47 +37,53 @@
   Pan-Andean explainable machine learning identifies priority glacial
   lakes for outburst flood early warning}
 
-%% ── Authors (withheld for double-blind review; see AUTHORS.md) ─────────────
-\author*[1]{\fnm{} \sur{Author names withheld for double-blind review}}\email{}
+%% ── Authors ───────────────────────────────────────────────────────────────
+\author[1]{\fnm{Dina Maribel} \sur{Yana-Yucra}}\email{maribelbel201314@gmail.com}
 
-\affil*[1]{Affiliation withheld for double-blind peer review}
+\author*[1]{\fnm{Richar Andre} \sur{Vilca-Solorzano}}\email{75521963@est.unap.edu.pe}
+
+\author[1]{\fnm{Milton Vladimir} \sur{Mamani-Calisaya}}\email{mmamanic@unap.edu.pe}
+
+\author[1]{\fnm{Fred} \sur{Torres-Cruz}}\email{ftorres@unap.edu.pe}
+
+\affil*[1]{\orgdiv{Faculty of Statistical and Computer Engineering},
+  \orgname{Universidad Nacional del Altiplano (UNAP)},
+  \orgaddress{\city{Puno}, \country{Peru}}}
 
 %% ── Abstract ──────────────────────────────────────────────────────────────
 \abstract{Glacial lake outburst floods (GLOFs) threaten millions of people
 across the Andes, yet disaster-risk managers lack scalable tools to
-identify which lakes most urgently require field inspection. Building on
-strong regional susceptibility studies, we present the first GLOF
-susceptibility model to combine continental scale with strict
-cross-national validation, interpretable physical drivers, and an openly
-reproducible watch-list, spanning the tropical cordilleras of Ecuador,
-Peru and Bolivia to the Patagonian icefields. The
-model was trained on 20{,}140 unique glacial lakes derived from 69{,}643
-multitemporal lake-year observations (Sentinel-2 and Landsat, 2017--2025)
-across fifteen regions in four countries. Of 71 compiled historical GLOFs
-(1932--2023), 38 spatially matched the satellite inventory, yielding 34
-positive lake-years from 32 distinct source lakes---a severe 1:629 class imbalance
-addressed through balanced ensemble learning. Under strict lake-grouped
-out-of-fold cross-validation with leakage-free preprocessing, a Random
-Forest achieved the highest discrimination (ROC-AUC\,=\,0.828; 95\%~CI:
-0.729--0.916; permutation $p<0.001$). Leave-One-Country-Out validation
-confirmed geographic transferability (held-out Peru: ROC-AUC\,=\,0.80;
-Chile\,=\,0.72). SHAP analysis revealed that GLOF-source lakes are not
-simply the largest; they are distinguished by a multivariate signature of
-moderate size, high compactness, low dam freeboard, and proximity to
+identify which lakes most urgently require field inspection. We present the
+first pan-Andean GLOF susceptibility model that combines continental scale
+with strict cross-national validation, interpretable physical drivers, and
+an openly reproducible watch-list spanning Ecuador, Peru, Bolivia and
+Chile. The model was trained on 20{,}140 unique glacial lakes derived from
+69{,}643 multitemporal lake-year observations (Sentinel-2 and Landsat,
+2017--2025) across fifteen regions in four countries. Of 71 compiled
+historical GLOFs (1932--2023), 38 spatially matched the satellite
+inventory, yielding 34 positive lake-years from 32 distinct source lakes
+(1:629 class imbalance). Under strict lake-grouped out-of-fold
+cross-validation, a Random Forest achieved the highest discrimination
+(ROC-AUC\,=\,0.828; 95\%~CI: 0.729--0.916; permutation $p<0.001$).
+Leave-One-Country-Out validation confirmed geographic transferability
+(held-out Peru: ROC-AUC\,=\,0.80; Chile\,=\,0.72). SHAP analysis revealed
+that GLOF-source lakes are distinguished by a multivariate signature of
+moderate size, high compactness, low dam freeboard and proximity to
 retreating ice. A compact top-2\% watch-list (403 lakes) recovers 41\% of
 all confirmed GLOF-source lakes at 20.3$\times$ random precision (rising to
-50\% in the top 5\%). After isotonic calibration, the scores are
-reliable (Brier skill score\,=\,0.24). By converting freely available
-satellite data into an openly reproducible, ranked watch-list, this
-framework provides resource-constrained Andean authorities with an
-actionable tool to prioritize field inspection and protect downstream
-communities, directly supporting disaster risk reduction under accelerating
-glacier retreat.}
+50\% in the top 5\%). After isotonic calibration the scores are reliable
+(Brier skill score\,=\,0.24). By converting freely available satellite
+data into an openly reproducible, ranked watch-list, this framework
+provides resource-constrained Andean authorities with an actionable tool to
+prioritize field inspection and protect downstream communities under
+accelerating glacier retreat.}
 
 \keywords{Glacial lake outburst flood, GLOF susceptibility, Explainable
 machine learning, SHAP interpretability, Disaster risk reduction, Andes}
 
 \maketitle
+
+\linenumbers
 
 %% =============================================================================
 \section{Introduction}\label{sec:intro}
@@ -1506,42 +1513,39 @@ supported the machine learning pipeline.
 \section*{Statements and Declarations}
 
 \bmhead{Funding}
-The authors received no specific grant from any funding agency in the
-public, commercial, or not-for-profit sectors for this work.
+The authors declare that no funds, grants, or other support were received
+during the preparation of this manuscript.
 
-\bmhead{Conflict of interest}
-The authors declare that they have no conflict of interest.
+\bmhead{Competing Interests}
+The authors have no relevant financial or non-financial interests to
+disclose.
+
+\bmhead{Author Contributions}
+R.A.~Vilca-Solorzano conceptualized the study, developed the methodology,
+performed the formal analysis and visualization, and wrote the original
+draft. D.M.~Yana-Yucra contributed to data curation and spatial
+validation. M.V.~Mamani-Calisaya contributed to the statistical analysis.
+F.~Torres-Cruz contributed to supervision and critical review of the
+manuscript. All authors read and approved the final manuscript.
+
+\bmhead{Data Availability}
+The complete glacial lake inventory (20{,}140 unique lakes), the historical
+GLOF event database, the 40-feature dataset, the trained models, the SHAP
+values, and the fully reproducible Python/Google Earth Engine pipeline are
+openly available under the MIT licence at
+\url{https://github.com/Andre031222/pan-andean-glof-susceptibility}; a
+versioned snapshot will be archived with a citable DOI (Zenodo) upon
+acceptance. All Sentinel-2 L2A and Landsat imagery is freely accessible via
+Google Earth Engine. The historical GLOF compilation derives from open
+sources (GloFLOD, INAIGEM, and \citet{Emmer2022}).
 
 \bmhead{Ethics approval}
+Not applicable. This study used only publicly available satellite remote
+sensing data and compiled historical records; no human participants,
+animals, or sensitive personal data were involved.
+
+\bmhead{Consent to participate / Consent to publish}
 Not applicable.
-
-\bmhead{Consent to participate}
-Not applicable.
-
-\bmhead{Consent for publication}
-All authors have read and approved the final manuscript and consent to
-its publication.
-
-\bmhead{Availability of data and materials}
-The derived glacial-lake inventory, the per-lake feature tables, the
-trained models, and all analysis outputs are openly available in a public
-project repository (link withheld for double-blind review and provided to
-the editors on request); a versioned snapshot will be archived with a
-citable DOI (Zenodo) upon acceptance. All primary input datasets are
-publicly available from their original providers: Sentinel-2 L2A (ESA
-Copernicus, via Google Earth Engine), NASADEM (NASA EARTHDATA), RGI~7.0
-glacier outlines (GLIMS/NSIDC), and the compiled historical GLOF inventory
-(GloFLOD, INAIGEM, and published tropical-Andes and Patagonian catalogs).
-All code, trained models, and derived datasets are released under the MIT
-licence in the repository referenced above.
-
-\bmhead{Code availability}
-The full leakage-free pipeline, trained models, and analysis notebooks are
-openly available under the MIT licence in the public project repository
-(link withheld for double-blind review; provided to the editors on request).
-
-\bmhead{Authors' contributions}
-Author contributions withheld for double-blind review (see separate title page).
 
 \bmhead{AI disclosure}
 A large language model was used solely for English-language editing;
