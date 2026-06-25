@@ -70,46 +70,61 @@ def _natural_earth():
 
 
 def fig1_map(lakes, glofs):
+    import contextily as ctx
+    import pyproj
     from matplotlib.patches import Rectangle
-    cx = lakes['lake_key'].str.rsplit('_', n=2, expand=True)
-    lon = pd.to_numeric(cx[1], errors='coerce') / 1000.0
-    lat = pd.to_numeric(cx[2], errors='coerce') / 1000.0
+    cxp = lakes['lake_key'].str.rsplit('_', n=2, expand=True)
+    lon = pd.to_numeric(cxp[1], errors='coerce') / 1000.0
+    lat = pd.to_numeric(cxp[2], errors='coerce') / 1000.0
     area = pd.to_numeric(lakes.get('area_m2', pd.Series(5e4, index=lakes.index)),
                          errors='coerce').fillna(5e4)
-    sizes = 4 + 6 * (np.log10(area.clip(lower=1e4)) - 4)
-    world = _natural_earth()
-    ext = (-81, -65, -53, 3)
+    sizes = 6 + 8 * (np.log10(area.clip(lower=1e4)) - 4)
+    oof = lakes['oof'].fillna(0).values
 
-    fig, ax = plt.subplots(figsize=(7.5, 9))
-    if world is not None:
-        world.plot(ax=ax, facecolor='#eef1f4', edgecolor='#aab2bd', linewidth=0.5, zorder=0)
-    ax.set_xlim(ext[0], ext[1]); ax.set_ylim(ext[2], ext[3])
+    pts = gpd.GeoDataFrame(geometry=gpd.points_from_xy(lon, lat), crs=4326).to_crs(3857)
+    cen = pd.DataFrame({'a': lakes['area_name'].values, 'lon': lon.values, 'lat': lat.values})
+    cc = cen.groupby('a')[['lon', 'lat']].mean().reset_index()
+    ccg = gpd.GeoDataFrame(cc, geometry=gpd.points_from_xy(cc['lon'], cc['lat']), crs=4326).to_crs(3857)
+    glg = glofs.to_crs(3857) if (glofs is not None and len(glofs)) else None
 
-    order = lakes['oof'].fillna(0).argsort()
-    sc = ax.scatter(lon.iloc[order], lat.iloc[order], c=lakes['oof'].iloc[order],
-                    cmap='RdYlBu_r', s=sizes.iloc[order], alpha=0.85, vmin=0, vmax=1,
-                    linewidths=0, zorder=3)
+    tr = pyproj.Transformer.from_crs(4326, 3857, always_xy=True)
+    ext = (-82, -52.5, -64.5, 3)
+    x0, y0 = tr.transform(ext[0], ext[1]); x1, y1 = tr.transform(ext[2], ext[3])
 
-    cen = lakes.copy()
-    cen['_lon'] = lon.values; cen['_lat'] = lat.values
-    cc = cen.groupby('area_name')[['_lon', '_lat']].mean()
-    ax.scatter(cc['_lon'], cc['_lat'], marker='o', facecolors='none', edgecolors='#2b2b2b',
-               s=55, linewidths=0.9, zorder=4, label='Study-area centroid')
+    fig, ax = plt.subplots(figsize=(6.6, 9.4))
+    ax.set_xlim(x0, x1); ax.set_ylim(y0, y1)
+    try:
+        ctx.add_basemap(ax, source=ctx.providers.Esri.WorldShadedRelief, zoom=5,
+                        attribution='Esri WorldShadedRelief', attribution_size=5)
+    except Exception as e:
+        print(f'  [warn] basemap fetch failed ({e})')
 
-    if glofs is not None and len(glofs):
-        gl = glofs.to_crs(4326)
-        ax.scatter(gl.geometry.x, gl.geometry.y, marker='*', s=70, c='black',
-                   edgecolors='white', linewidths=0.4, label='Historical GLOF', zorder=5)
-    ax.set_xlabel('Longitude'); ax.set_ylabel('Latitude')
-    ax.legend(loc='lower right', fontsize=8, frameon=True)
-    cb = fig.colorbar(sc, ax=ax, fraction=0.035, pad=0.02)
+    order = np.argsort(oof)
+    sc = ax.scatter(pts.geometry.x.values[order], pts.geometry.y.values[order],
+                    c=oof[order], s=sizes.values[order], cmap='RdYlBu_r',
+                    vmin=0, vmax=1, alpha=0.9, linewidths=0, zorder=3)
+    ax.scatter(ccg.geometry.x, ccg.geometry.y, marker='o', facecolors='none',
+               edgecolors='#111', s=80, linewidths=1.1, zorder=4, label='Study-area centroid')
+    if glg is not None:
+        ax.scatter(glg.geometry.x, glg.geometry.y, marker='*', s=85, c='black',
+                   edgecolors='white', linewidths=0.5, zorder=5, label='Historical GLOF')
+
+    lats = [0, -10, -20, -30, -40, -50]; lons = [-80, -75, -70, -65]
+    ax.set_yticks([tr.transform(-70, la)[1] for la in lats])
+    ax.set_yticklabels(['0°' if la == 0 else f'{abs(la)}°S' for la in lats], fontsize=8)
+    ax.set_xticks([tr.transform(lo, -25)[0] for lo in lons])
+    ax.set_xticklabels([f'{abs(lo)}°W' for lo in lons], fontsize=8)
+    ax.grid(True, alpha=0.25, linewidth=0.4)
+    ax.legend(loc='lower right', fontsize=8, frameon=True, facecolor='white', framealpha=0.92)
+    cb = fig.colorbar(sc, ax=ax, fraction=0.034, pad=0.02)
     cb.set_label('Susceptibility score')
 
+    world = _natural_earth()
     if world is not None:
-        iax = fig.add_axes([0.135, 0.135, 0.23, 0.23])
-        world.plot(ax=iax, facecolor='#eef1f4', edgecolor='#aab2bd', linewidth=0.3)
-        iax.add_patch(Rectangle((ext[0], ext[2]), ext[1] - ext[0], ext[3] - ext[2],
-                                fill=False, edgecolor='red', linewidth=1.1, zorder=5))
+        iax = fig.add_axes([0.145, 0.135, 0.25, 0.25])
+        world.plot(ax=iax, facecolor='#e9edf1', edgecolor='#9aa3ad', linewidth=0.3)
+        iax.add_patch(Rectangle((ext[0], ext[1]), ext[2] - ext[0], ext[3] - ext[1],
+                                fill=False, edgecolor='red', linewidth=1.3, zorder=5))
         iax.set_xlim(-82, -33); iax.set_ylim(-56, 14)
         iax.set_xticks([]); iax.set_yticks([])
         for sp in iax.spines.values():
