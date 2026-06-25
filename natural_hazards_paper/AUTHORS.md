@@ -21,10 +21,10 @@ Altiplano (UNAP), Puno, Peru.
 
 ## Authors' contributions
 
-- **R.A.V.S.** (Vilca-Solorzano): study design, pipeline implementation, formal analysis, manuscript writing.
-- **D.M.Y.Y.** (Yana-Yucra): data curation, spatial validation.
-- **M.V.M.C.** (Mamani-Calisaya): statistical analysis.
-- **F.T.C.** (Torres-Cruz): supervision, critical review.
+- **R.A.V.S.** (Vilca-Solorzano): conceptualization, methodology, formal analysis, visualization, original draft.
+- **D.M.Y.Y.** (Yana-Yucra): data curation, validation, writing – review & editing.
+- **M.V.M.C.** (Mamani-Calisaya): supervision, resources, critical review.
+- **F.T.C.** (Torres-Cruz): supervision, resources, critical review.
 
 All authors read and approved the final manuscript.
 
