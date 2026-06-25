@@ -1,15 +1,16 @@
-# Authors — withheld from the blind manuscript
+# Authors
 
-> Natural Hazards uses **double-blind peer review**. The submitted PDF is
-> anonymized; this file preserves the author block to restore on acceptance
-> (and for the separate title page uploaded to Editorial Manager).
+> Natural Hazards uses single-anonymized peer review (authors are visible).
+> The main manuscript carries the full author block; a separate Title Page
+> (`title_page.tex/pdf`) is uploaded to Editorial Manager. This file is the
+> canonical record of author order and details.
 
 ## Author list (order)
 
 | # | Name | Email | Role |
 |---|------|-------|------|
-| 1 | Dina Maribel Yana-Yucra | maribelbel201314@gmail.com | Author |
-| 2 | **Richar Andre Vilca-Solorzano** | 75521963@est.unap.edu.pe | **Corresponding author** |
+| 1 | **Richar Andre Vilca-Solorzano** | 75521963@est.unap.edu.pe | **First author / Corresponding author** |
+| 2 | Dina Maribel Yana-Yucra | maribelbel201314@gmail.com | Author |
 | 3 | Milton Vladimir Mamani-Calisaya | mmamanic@unap.edu.pe | Author |
 | 4 | Fred Torres-Cruz | ftorres@unap.edu.pe | Author |
 
@@ -20,22 +21,22 @@ Altiplano (UNAP), Puno, Peru.
 
 ## Authors' contributions
 
-- **D.M.Y.Y.** (Yana-Yucra): data processing, spatial validation.
-- **R.A.V.S.** (Vilca-Solorzano): study design, pipeline implementation, manuscript writing.
+- **R.A.V.S.** (Vilca-Solorzano): study design, pipeline implementation, formal analysis, manuscript writing.
+- **D.M.Y.Y.** (Yana-Yucra): data curation, spatial validation.
 - **M.V.M.C.** (Mamani-Calisaya): statistical analysis.
-- **F.T.C.** (Torres-Cruz): supervision, manuscript revision.
+- **F.T.C.** (Torres-Cruz): supervision, critical review.
 
 All authors read and approved the final manuscript.
 
-## Repository (also withheld during review)
+## Repository
 
 https://github.com/Andre031222/pan-andean-glof-susceptibility
 
-## LaTeX block to restore on acceptance
+## LaTeX author block (current order)
 
 ```latex
-\author[1]{\fnm{Dina Maribel} \sur{Yana-Yucra}}\email{maribelbel201314@gmail.com}
 \author*[1]{\fnm{Richar Andre} \sur{Vilca-Solorzano}}\email{75521963@est.unap.edu.pe}
+\author[1]{\fnm{Dina Maribel} \sur{Yana-Yucra}}\email{maribelbel201314@gmail.com}
 \author[1]{\fnm{Milton Vladimir} \sur{Mamani-Calisaya}}\email{mmamanic@unap.edu.pe}
 \author[1]{\fnm{Fred} \sur{Torres-Cruz}}\email{ftorres@unap.edu.pe}
 \affil*[1]{\orgdiv{Faculty of Statistical and Computer Engineering},
